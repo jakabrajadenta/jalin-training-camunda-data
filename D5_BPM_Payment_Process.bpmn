@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_166ep8s" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.36.1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.7.0">
+  <bpmn:process id="BPM_Payment_Process" name="BPM Payment Process" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>Flow_03uk9ig</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_03uk9ig" sourceRef="StartEvent_1" targetRef="Activity_06k1iv2" />
+    <bpmn:sequenceFlow id="Flow_1puqrh2" sourceRef="Activity_06k1iv2" targetRef="Activity_1hums46" />
+    <bpmn:sequenceFlow id="Flow_0dlo8nl" sourceRef="Activity_1hums46" targetRef="Activity_0q9oab7" />
+    <bpmn:exclusiveGateway id="Gateway_1gwzvis" name="Payment Status">
+      <bpmn:incoming>Flow_1jf0pxd</bpmn:incoming>
+      <bpmn:outgoing>Flow_107sov8</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0z9uj3p</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1jf0pxd" sourceRef="Activity_0q9oab7" targetRef="Gateway_1gwzvis" />
+    <bpmn:endEvent id="Event_0xm1od3" name="Success">
+      <bpmn:incoming>Flow_107sov8</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_107sov8" sourceRef="Gateway_1gwzvis" targetRef="Event_0xm1od3">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=result = "success"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_04cdp5y" name="Failed">
+      <bpmn:incoming>Flow_0z9uj3p</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0z9uj3p" sourceRef="Gateway_1gwzvis" targetRef="Event_04cdp5y">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=result = "failed"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:userTask id="Activity_06k1iv2" name="Payment Data">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+        <zeebe:formDefinition formId="Form_Payment_Data" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_03uk9ig</bpmn:incoming>
+      <bpmn:outgoing>Flow_1puqrh2</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_1hums46" name="Produce Kafka">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="send-request" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1puqrh2</bpmn:incoming>
+      <bpmn:outgoing>Flow_0dlo8nl</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_0q9oab7" name="Consume Kafka">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="wait-result" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0dlo8nl</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jf0pxd</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="BPM_Payment_Process">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="182" y="162" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="188" y="205" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1gwzvis_di" bpmnElement="Gateway_1gwzvis" isMarkerVisible="true">
+        <dc:Bounds x="755" y="155" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="741" y="125" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0xm1od3_di" bpmnElement="Event_0xm1od3">
+        <dc:Bounds x="872" y="162" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="869" y="205" width="43" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_04cdp5y_di" bpmnElement="Event_04cdp5y">
+        <dc:Bounds x="872" y="272" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="875" y="315" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0m8c9pq_di" bpmnElement="Activity_06k1iv2">
+        <dc:Bounds x="270" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_01t14fm_di" bpmnElement="Activity_1hums46">
+        <dc:Bounds x="430" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1xyruts_di" bpmnElement="Activity_0q9oab7">
+        <dc:Bounds x="590" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_03uk9ig_di" bpmnElement="Flow_03uk9ig">
+        <di:waypoint x="218" y="180" />
+        <di:waypoint x="270" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1puqrh2_di" bpmnElement="Flow_1puqrh2">
+        <di:waypoint x="370" y="180" />
+        <di:waypoint x="430" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dlo8nl_di" bpmnElement="Flow_0dlo8nl">
+        <di:waypoint x="530" y="180" />
+        <di:waypoint x="590" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jf0pxd_di" bpmnElement="Flow_1jf0pxd">
+        <di:waypoint x="690" y="180" />
+        <di:waypoint x="755" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_107sov8_di" bpmnElement="Flow_107sov8">
+        <di:waypoint x="805" y="180" />
+        <di:waypoint x="872" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0z9uj3p_di" bpmnElement="Flow_0z9uj3p">
+        <di:waypoint x="780" y="205" />
+        <di:waypoint x="780" y="290" />
+        <di:waypoint x="872" y="290" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

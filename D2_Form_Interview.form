@@ -1,0 +1,55 @@
+{
+  "components": [
+    {
+      "label": "Candidate Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_03b09hg",
+        "columns": null
+      },
+      "id": "Field_0ks0jza",
+      "key": "candidate_name",
+      "readonly": true
+    },
+    {
+      "label": "Division Applied",
+      "values": [
+        {
+          "label": "Finance",
+          "value": "finance"
+        },
+        {
+          "label": "HRD",
+          "value": "hrd"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_111iaxj",
+        "columns": null
+      },
+      "id": "Field_0e1lgvz",
+      "key": "division",
+      "readonly": "on"
+    },
+    {
+      "label": "Interview Result",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_1nmrmfn",
+        "columns": null
+      },
+      "id": "Field_1ngesjn",
+      "key": "interview_result"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Interview",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

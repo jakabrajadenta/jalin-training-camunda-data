@@ -1,0 +1,57 @@
+{
+  "components": [
+    {
+      "label": "Transaction Status",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1l6ocsm",
+        "columns": null
+      },
+      "id": "Field_1q72et0",
+      "key": "status",
+      "readonly": true
+    },
+    {
+      "label": "Message",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1epaiuq",
+        "columns": null
+      },
+      "id": "Field_1s0k0jo",
+      "key": "message",
+      "readonly": true
+    },
+    {
+      "label": "Issuer/BANK",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1akct6b",
+        "columns": null
+      },
+      "id": "Field_1fvsnlz",
+      "key": "issuer",
+      "readonly": "on"
+    },
+    {
+      "label": "Amount (IDR)",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_126redm",
+        "columns": null
+      },
+      "id": "Field_1ye4fnf",
+      "key": "amount",
+      "readonly": "on"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Transaction_Result",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

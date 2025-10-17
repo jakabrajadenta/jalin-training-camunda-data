@@ -1,0 +1,76 @@
+{
+  "components": [
+    {
+      "label": "Mode",
+      "values": [
+        {
+          "label": "Get transaction from a batch",
+          "value": "get_batch"
+        },
+        {
+          "label": "Create a new batch",
+          "value": "create_batch"
+        },
+        {
+          "label": "Compare 2 batches",
+          "value": "compare_batches"
+        }
+      ],
+      "type": "select",
+      "key": "mode",
+      "validate": {
+        "required": true
+      },
+      "id": "Field_1j7ykmg",
+      "layout": {
+        "row": "Row_099ft26"
+      }
+    },
+    {
+      "label": "Batch ID",
+      "type": "textfield",
+      "key": "batchId",
+      "validate": {
+        "required": true,
+        "minLength": 3
+      },
+      "id": "Field_0y2wmeo",
+      "layout": {
+        "row": "Row_1x2tcf7"
+      }
+    },
+    {
+      "label": "Payload A (JSON)",
+      "type": "textarea",
+      "key": "payloadA",
+      "validate": {
+        "required": false
+      },
+      "id": "Field_1jdpsfo",
+      "layout": {
+        "row": "Row_0bg09sy"
+      }
+    },
+    {
+      "label": "Payload B (JSON, optional untuk compare)",
+      "type": "textarea",
+      "key": "payloadB",
+      "validate": {
+        "required": false
+      },
+      "id": "Field_05n2zqd",
+      "layout": {
+        "row": "Row_158sg1u"
+      }
+    }
+  ],
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "id": "Form_Routing",
+  "type": "default",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

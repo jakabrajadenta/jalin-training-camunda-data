@@ -1,0 +1,98 @@
+{
+  "components": [
+    {
+      "label": "Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_07qwupv",
+        "columns": null
+      },
+      "id": "Field_0cahtxv",
+      "key": "name",
+      "readonly": true
+    },
+    {
+      "label": "Job",
+      "values": [
+        {
+          "label": "Employee",
+          "value": "employee"
+        },
+        {
+          "label": "Entrepreneur",
+          "value": "entrepreneur"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_1efoms7",
+        "columns": null
+      },
+      "id": "Field_0xleoj9",
+      "key": "job",
+      "readonly": "on"
+    },
+    {
+      "label": "Status Marriage",
+      "values": [
+        {
+          "label": "Married",
+          "value": "married"
+        },
+        {
+          "label": "Single",
+          "value": "single"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_1jubam4",
+        "columns": null
+      },
+      "id": "Field_1bcg33z",
+      "key": "status_marriage",
+      "readonly": true
+    },
+    {
+      "label": "Monthly Income",
+      "type": "number",
+      "layout": {
+        "row": "Row_0k7sogf",
+        "columns": null
+      },
+      "id": "Field_16vcobc",
+      "key": "monthly_income",
+      "readonly": "on"
+    },
+    {
+      "label": "Loan Amount (IDR)",
+      "type": "number",
+      "layout": {
+        "row": "Row_0pauvw8",
+        "columns": null
+      },
+      "id": "Field_0alxqyg",
+      "key": "loan_amount",
+      "readonly": "on"
+    },
+    {
+      "label": "Additional Notes",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0zx3q4e",
+        "columns": null
+      },
+      "id": "Field_1baz0c9",
+      "key": "notes"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Data_Check",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

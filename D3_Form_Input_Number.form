@@ -1,0 +1,33 @@
+{
+  "components": [
+    {
+      "label": "Value 1",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0dafirz",
+        "columns": null
+      },
+      "id": "Field_093cibm",
+      "key": "value1"
+    },
+    {
+      "label": "Value 2",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0j6clir",
+        "columns": null
+      },
+      "id": "Field_08vlgpa",
+      "key": "value2"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Input_Number",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

@@ -1,0 +1,56 @@
+{
+  "components": [
+    {
+      "label": "Nama",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1klthyk",
+        "columns": null
+      },
+      "id": "Field_1ty7ub3",
+      "key": "nama",
+      "readonly": true
+    },
+    {
+      "label": "NIK",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1apxub4",
+        "columns": null
+      },
+      "id": "Field_1wpmv4i",
+      "key": "nik",
+      "readonly": "on"
+    },
+    {
+      "label": "Jumlah Pinjaman",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0ib5vc8",
+        "columns": null
+      },
+      "id": "Field_100ca72",
+      "key": "jumlah_pinjaman",
+      "readonly": true
+    },
+    {
+      "label": "Persetujuan",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0e5ecfe",
+        "columns": null
+      },
+      "id": "Field_0q6fuvk",
+      "key": "persetujuan"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Persetujuan",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

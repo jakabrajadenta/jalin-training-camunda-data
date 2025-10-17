@@ -1,0 +1,76 @@
+{
+  "components": [
+    {
+      "label": "Candidate Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1hcu0fp",
+        "columns": null
+      },
+      "id": "Field_0ra22k4",
+      "key": "candidate_name",
+      "readonly": true
+    },
+    {
+      "label": "Division Applied",
+      "values": [
+        {
+          "label": "Finance",
+          "value": "finance"
+        },
+        {
+          "label": "HRD",
+          "value": "hrd"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0jsibtx",
+        "columns": null
+      },
+      "id": "Field_0dwoqqs",
+      "key": "division",
+      "readonly": "on"
+    },
+    {
+      "label": "Interview Result",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_1abdoi3",
+        "columns": null
+      },
+      "id": "Field_0gjhy02",
+      "key": "interview_result",
+      "readonly": "on"
+    },
+    {
+      "label": "Final Result",
+      "values": [
+        {
+          "label": "Approve",
+          "value": "approve"
+        },
+        {
+          "label": "Reject",
+          "value": "reject"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_02kri0y",
+        "columns": null
+      },
+      "id": "Field_0wuwzmh",
+      "key": "final_result"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Review",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

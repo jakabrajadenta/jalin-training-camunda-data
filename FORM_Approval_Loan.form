@@ -1,0 +1,91 @@
+{
+  "components": [
+    {
+      "label": "Nama",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1hey8kb",
+        "columns": null
+      },
+      "id": "Field_1gzjwm2",
+      "key": "nama",
+      "readonly": true
+    },
+    {
+      "label": "Alamat",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0dhdyln",
+        "columns": null
+      },
+      "id": "Field_09iitpk",
+      "key": "alamat",
+      "readonly": "on"
+    },
+    {
+      "label": "Jumlah Pinjaman",
+      "type": "number",
+      "layout": {
+        "row": "Row_0jb0666",
+        "columns": null
+      },
+      "id": "Field_1e0co9m",
+      "key": "jumlah_pinjaman",
+      "readonly": "on"
+    },
+    {
+      "label": "Jenis Pinjaman",
+      "values": [
+        {
+          "label": "Pinjaman Pendidikan",
+          "value": "PP"
+        },
+        {
+          "label": "Renovasi Rumah",
+          "value": "RR"
+        },
+        {
+          "label": "Kredit Rumah",
+          "value": "KR"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_1i1xn4l",
+        "columns": null
+      },
+      "id": "Field_0d4dcnu",
+      "key": "jenis_pinjaman",
+      "readonly": true
+    },
+    {
+      "label": "Approval",
+      "values": [
+        {
+          "label": "Yes",
+          "value": "yes"
+        },
+        {
+          "label": "No",
+          "value": "no"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_1tkoo9c",
+        "columns": null
+      },
+      "id": "Field_03y2sm4",
+      "key": "approval"
+    }
+  ],
+  "type": "default",
+  "id": "form_approval_loan",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

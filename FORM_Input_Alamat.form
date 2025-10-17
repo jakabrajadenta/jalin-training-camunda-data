@@ -1,0 +1,35 @@
+{
+  "components": [
+    {
+      "label": "Nama",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1x06282",
+        "columns": null
+      },
+      "id": "Field_0n5ylb4",
+      "key": "nama",
+      "readonly": "on"
+    },
+    {
+      "label": "Alamat",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_04c9edc",
+        "columns": null
+      },
+      "id": "Field_0up2amj",
+      "key": "alamat",
+      "readonly": false
+    }
+  ],
+  "type": "default",
+  "id": "input_alamat",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

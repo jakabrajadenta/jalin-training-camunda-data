@@ -1,0 +1,63 @@
+{
+  "components": [
+    {
+      "label": "Company Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0tuubpo",
+        "columns": null
+      },
+      "id": "Field_0bwj96j",
+      "key": "company_name"
+    },
+    {
+      "label": "Salary Period",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1ocui9q",
+        "columns": null
+      },
+      "id": "Field_0zhngh8",
+      "key": "salary_period"
+    },
+    {
+      "label": "Validation Result",
+      "values": [
+        {
+          "label": "Valid",
+          "value": "valid"
+        },
+        {
+          "label": "Invalid",
+          "value": "invalid"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_1ei7ii0",
+        "columns": null
+      },
+      "id": "Field_1iv0h70",
+      "key": "validation_result_payslip"
+    },
+    {
+      "label": "Pay Slip Note",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0c1y7pv",
+        "columns": null
+      },
+      "id": "Field_10pzkcv",
+      "key": "note_pay_slip"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Pay_Slip",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

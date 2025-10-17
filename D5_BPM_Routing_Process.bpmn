@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_routing" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.36.1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.7.0">
+  <bpmn:process id="BPM_Routing_Process" name="BPM Routing Process" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_Routing" name="Start">
+      <bpmn:outgoing>Flow_start_to_form</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Task_InputRequest" name="Input Request">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+        <zeebe:formDefinition formId="Form_Routing" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_start_to_form</bpmn:incoming>
+      <bpmn:outgoing>Flow_form_to_parse</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Task_ParseJson" name="Parse JSON Request">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="parse_json" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_form_to_parse</bpmn:incoming>
+      <bpmn:outgoing>Flow_parse_to_gateway</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_Mode" name="Routing Mode">
+      <bpmn:incoming>Flow_parse_to_gateway</bpmn:incoming>
+      <bpmn:outgoing>Flow_to_read</bpmn:outgoing>
+      <bpmn:outgoing>Flow_to_create</bpmn:outgoing>
+      <bpmn:outgoing>Flow_to_iterate</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="Task_ReadFromCollection" name="Read From Collection">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="read_from_collection" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_to_read</bpmn:incoming>
+      <bpmn:outgoing>Flow_read_to_generate</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Task_CreateOrEdit" name="Create or Edit Collection">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="create_or_edit_collection" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_to_create</bpmn:incoming>
+      <bpmn:outgoing>Flow_create_to_generate</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Task_IterateCollections" name="Iterate Two Collections">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="iterate_collections" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_to_iterate</bpmn:incoming>
+      <bpmn:outgoing>Flow_iterate_to_generate</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Task_GenerateResponse" name="Generate JSON Response">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="generate_json_response" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_read_to_generate</bpmn:incoming>
+      <bpmn:incoming>Flow_create_to_generate</bpmn:incoming>
+      <bpmn:incoming>Flow_iterate_to_generate</bpmn:incoming>
+      <bpmn:outgoing>Flow_generate_to_send</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Task_SendResponse" name="Send JSON Response">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="send_json_response" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_generate_to_send</bpmn:incoming>
+      <bpmn:outgoing>Flow_send_to_end</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_Done" name="Done">
+      <bpmn:incoming>Flow_send_to_end</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_start_to_form" sourceRef="StartEvent_Routing" targetRef="Task_InputRequest" />
+    <bpmn:sequenceFlow id="Flow_form_to_parse" sourceRef="Task_InputRequest" targetRef="Task_ParseJson" />
+    <bpmn:sequenceFlow id="Flow_parse_to_gateway" sourceRef="Task_ParseJson" targetRef="Gateway_Mode" />
+    <bpmn:sequenceFlow id="Flow_to_read" sourceRef="Gateway_Mode" targetRef="Task_ReadFromCollection">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= mode = "get_batch"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_to_create" sourceRef="Gateway_Mode" targetRef="Task_CreateOrEdit">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= mode = "create_batch"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_to_iterate" sourceRef="Gateway_Mode" targetRef="Task_IterateCollections">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= mode = "compare_batches"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_read_to_generate" sourceRef="Task_ReadFromCollection" targetRef="Task_GenerateResponse" />
+    <bpmn:sequenceFlow id="Flow_create_to_generate" sourceRef="Task_CreateOrEdit" targetRef="Task_GenerateResponse" />
+    <bpmn:sequenceFlow id="Flow_iterate_to_generate" sourceRef="Task_IterateCollections" targetRef="Task_GenerateResponse" />
+    <bpmn:sequenceFlow id="Flow_generate_to_send" sourceRef="Task_GenerateResponse" targetRef="Task_SendResponse" />
+    <bpmn:sequenceFlow id="Flow_send_to_end" sourceRef="Task_SendResponse" targetRef="End_Done" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Routing">
+    <bpmndi:BPMNPlane id="BPMNPlane_Routing" bpmnElement="BPM_Routing_Process">
+      <bpmndi:BPMNShape id="Task_ParseJson_di" bpmnElement="Task_ParseJson">
+        <dc:Bounds x="510" y="220" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Mode_di" bpmnElement="Gateway_Mode" isMarkerVisible="true">
+        <dc:Bounds x="700" y="235" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="691" y="285" width="69" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_CreateOrEdit_di" bpmnElement="Task_CreateOrEdit">
+        <dc:Bounds x="810" y="220" width="170" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ReadFromCollection_di" bpmnElement="Task_ReadFromCollection">
+        <dc:Bounds x="810" y="80" width="170" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_IterateCollections_di" bpmnElement="Task_IterateCollections">
+        <dc:Bounds x="810" y="350" width="170" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_GenerateResponse_di" bpmnElement="Task_GenerateResponse">
+        <dc:Bounds x="1050" y="220" width="180" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_SendResponse_di" bpmnElement="Task_SendResponse">
+        <dc:Bounds x="1305" y="220" width="170" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_Done_di" bpmnElement="End_Done">
+        <dc:Bounds x="1602" y="272" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1607" y="315" width="27" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_Routing_di" bpmnElement="StartEvent_Routing">
+        <dc:Bounds x="152" y="162" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="198" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_InputRequest_di" bpmnElement="Task_InputRequest">
+        <dc:Bounds x="295" y="220" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_form_to_parse_di" bpmnElement="Flow_form_to_parse">
+        <di:waypoint x="445" y="260" />
+        <di:waypoint x="510" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_parse_to_gateway_di" bpmnElement="Flow_parse_to_gateway">
+        <di:waypoint x="660" y="260" />
+        <di:waypoint x="700" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_to_read_di" bpmnElement="Flow_to_read">
+        <di:waypoint x="725" y="235" />
+        <di:waypoint x="725" y="120" />
+        <di:waypoint x="810" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_to_create_di" bpmnElement="Flow_to_create">
+        <di:waypoint x="750" y="260" />
+        <di:waypoint x="810" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_to_iterate_di" bpmnElement="Flow_to_iterate">
+        <di:waypoint x="725" y="285" />
+        <di:waypoint x="725" y="390" />
+        <di:waypoint x="810" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_create_to_generate_di" bpmnElement="Flow_create_to_generate">
+        <di:waypoint x="980" y="260" />
+        <di:waypoint x="1050" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_read_to_generate_di" bpmnElement="Flow_read_to_generate">
+        <di:waypoint x="980" y="120" />
+        <di:waypoint x="1000" y="120" />
+        <di:waypoint x="1000" y="260" />
+        <di:waypoint x="1050" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_iterate_to_generate_di" bpmnElement="Flow_iterate_to_generate">
+        <di:waypoint x="980" y="390" />
+        <di:waypoint x="1000" y="390" />
+        <di:waypoint x="1000" y="260" />
+        <di:waypoint x="1050" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_generate_to_send_di" bpmnElement="Flow_generate_to_send">
+        <di:waypoint x="1230" y="260" />
+        <di:waypoint x="1305" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_send_to_end_di" bpmnElement="Flow_send_to_end">
+        <di:waypoint x="1475" y="260" />
+        <di:waypoint x="1539" y="260" />
+        <di:waypoint x="1539" y="290" />
+        <di:waypoint x="1602" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_start_to_form_di" bpmnElement="Flow_start_to_form">
+        <di:waypoint x="188" y="179" />
+        <di:waypoint x="274" y="179" />
+        <di:waypoint x="274" y="264" />
+        <di:waypoint x="295" y="264" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

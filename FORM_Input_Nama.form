@@ -1,0 +1,23 @@
+{
+  "components": [
+    {
+      "label": "Nama",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1ju6zuu",
+        "columns": null
+      },
+      "id": "Field_0hxruth",
+      "key": "nama"
+    }
+  ],
+  "type": "default",
+  "id": "input_nama",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

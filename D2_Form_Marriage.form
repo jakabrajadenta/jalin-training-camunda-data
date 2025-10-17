@@ -1,0 +1,63 @@
+{
+  "components": [
+    {
+      "label": "Partner Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0xi93rf",
+        "columns": null
+      },
+      "id": "Field_12d6sc3",
+      "key": "partner_name"
+    },
+    {
+      "label": "Marriage Book Number",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0o7eriv",
+        "columns": null
+      },
+      "id": "Field_05pgaet",
+      "key": "marriage_book_number"
+    },
+    {
+      "label": "Validation Result",
+      "values": [
+        {
+          "label": "Valid",
+          "value": "valid"
+        },
+        {
+          "label": "Invalid",
+          "value": "invalid"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_13z37d0",
+        "columns": null
+      },
+      "id": "Field_04kvun3",
+      "key": "validation_result_marriage"
+    },
+    {
+      "label": "Marriage Note",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_1my75lf",
+        "columns": null
+      },
+      "id": "Field_0vfnovh",
+      "key": "note_marriage"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Marriage",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

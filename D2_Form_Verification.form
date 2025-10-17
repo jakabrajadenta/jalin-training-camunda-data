@@ -1,0 +1,88 @@
+{
+  "components": [
+    {
+      "label": "Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0dsojcv",
+        "columns": null
+      },
+      "id": "Field_0l5a1r6",
+      "key": "name",
+      "readonly": true
+    },
+    {
+      "label": "Pay Slip Status Verification",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1wkxjmu",
+        "columns": null
+      },
+      "id": "Field_01ox1bi",
+      "key": "validation_result_payslip",
+      "readonly": true
+    },
+    {
+      "label": "SIUP Status Verification",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0ni5tkx",
+        "columns": null
+      },
+      "id": "Field_1ugzrst",
+      "key": "validation_result_siup",
+      "readonly": "on"
+    },
+    {
+      "label": "Marriage Status Verification",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1197oki",
+        "columns": null
+      },
+      "id": "Field_0l2yw6q",
+      "key": "validation_result_marriage",
+      "readonly": "on"
+    },
+    {
+      "label": "Final Verification Result",
+      "values": [
+        {
+          "label": "Approve",
+          "value": "approve"
+        },
+        {
+          "label": "Reject",
+          "value": "reject"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0gsig2d",
+        "columns": null
+      },
+      "id": "Field_1v8n6r6",
+      "key": "final_verification_result",
+      "readonly": false
+    },
+    {
+      "label": "Final Note",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0hhpg8i",
+        "columns": null
+      },
+      "id": "Field_0ed5tl0",
+      "key": "note_final"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Verification",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

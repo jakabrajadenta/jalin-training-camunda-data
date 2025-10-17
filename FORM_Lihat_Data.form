@@ -1,0 +1,46 @@
+{
+  "components": [
+    {
+      "label": "Nama",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0sndhau",
+        "columns": null
+      },
+      "id": "Field_0ae2ni8",
+      "key": "nama",
+      "readonly": "on"
+    },
+    {
+      "label": "Alamat",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_06nsag6",
+        "columns": null
+      },
+      "id": "Field_0wx3htv",
+      "key": "alamat",
+      "readonly": "on"
+    },
+    {
+      "label": "Umur",
+      "type": "number",
+      "layout": {
+        "row": "Row_1jauclv",
+        "columns": null
+      },
+      "id": "Field_1fjrzlm",
+      "key": "umur",
+      "readonly": "on"
+    }
+  ],
+  "type": "default",
+  "id": "lihat_data",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

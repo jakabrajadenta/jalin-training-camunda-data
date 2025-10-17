@@ -1,0 +1,63 @@
+{
+  "components": [
+    {
+      "label": "Business Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1r2bff5",
+        "columns": null
+      },
+      "id": "Field_17vs416",
+      "key": "business_name"
+    },
+    {
+      "label": "SIUP Number",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1nh4ygj",
+        "columns": null
+      },
+      "id": "Field_1ox8na6",
+      "key": "siup_number"
+    },
+    {
+      "label": "Validation Result",
+      "values": [
+        {
+          "label": "Valid",
+          "value": "valid"
+        },
+        {
+          "label": "Invalid",
+          "value": "invalid"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_1ny14dm",
+        "columns": null
+      },
+      "id": "Field_15o1x9c",
+      "key": "validation_result_siup"
+    },
+    {
+      "label": "SIUP Note",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0ze5tcg",
+        "columns": null
+      },
+      "id": "Field_0fyxm8y",
+      "key": "note_siup"
+    }
+  ],
+  "type": "default",
+  "id": "Form_SIUP",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

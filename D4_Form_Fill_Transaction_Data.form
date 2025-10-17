@@ -1,0 +1,80 @@
+{
+  "components": [
+    {
+      "label": "Customer Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0ka2u0z",
+        "columns": null
+      },
+      "id": "Field_0u3yhzm",
+      "key": "customer_name",
+      "readonly": true
+    },
+    {
+      "label": "Card Number",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_07ocp8y",
+        "columns": null
+      },
+      "id": "Field_07umurl",
+      "key": "cardNumber",
+      "validate": {
+        "required": true
+      },
+      "readonly": false
+    },
+    {
+      "label": "Amount (IDR)",
+      "type": "number",
+      "layout": {
+        "row": "Row_1l5uhsq",
+        "columns": null
+      },
+      "id": "Field_1fu0na4",
+      "key": "amount",
+      "validate": {
+        "required": true
+      },
+      "readonly": "on"
+    },
+    {
+      "label": "Merchant",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0n4kvk1",
+        "columns": null
+      },
+      "id": "Field_0o0dckg",
+      "key": "merchant",
+      "validate": {
+        "required": true
+      },
+      "readonly": true
+    },
+    {
+      "label": "Issuer/BANK",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0w2bdiw",
+        "columns": null
+      },
+      "id": "Field_03xd01r",
+      "key": "issuer",
+      "validate": {
+        "required": true
+      },
+      "readonly": "on"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Fill_Transaction_Data",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

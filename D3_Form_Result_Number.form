@@ -1,0 +1,33 @@
+{
+  "components": [
+    {
+      "label": "Result",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0xci5v3",
+        "columns": null
+      },
+      "id": "Field_0x0hmk7",
+      "key": "result"
+    },
+    {
+      "label": "Message",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1lor1hj",
+        "columns": null
+      },
+      "id": "Field_1teikyq",
+      "key": "message"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Result_Number",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

@@ -1,0 +1,52 @@
+{
+  "components": [
+    {
+      "label": "Customer Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0kxma55",
+        "columns": null
+      },
+      "id": "Field_150fotk",
+      "key": "customer_name",
+      "validate": {
+        "required": true
+      },
+      "readonly": "on"
+    },
+    {
+      "label": "Order ID",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1ooe6p4",
+        "columns": null
+      },
+      "id": "Field_0782f2a",
+      "key": "orderId",
+      "validate": {
+        "required": true
+      },
+      "readonly": "on"
+    },
+    {
+      "label": "Amount (IDR)",
+      "type": "number",
+      "layout": {
+        "row": "Row_1dkapby",
+        "columns": null
+      },
+      "id": "Field_0rd01rm",
+      "key": "amount",
+      "readonly": true
+    }
+  ],
+  "type": "default",
+  "id": "Form_Payment_Data",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}

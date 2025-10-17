@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0mr512t" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.36.1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.7.0">
+  <bpmn:process id="BPM_Calculate" name="BPM Calculate" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_11godfq</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_11godfq" sourceRef="StartEvent_1" targetRef="Activity_1f631ky" />
+    <bpmn:sequenceFlow id="Flow_0xhzdcj" sourceRef="Activity_1f631ky" targetRef="Activity_0mfzq70" />
+    <bpmn:sequenceFlow id="Flow_0niob9j" sourceRef="Activity_0mfzq70" targetRef="Activity_182bxbe" />
+    <bpmn:endEvent id="Event_1t9nbgs">
+      <bpmn:incoming>Flow_0c59wy6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0c59wy6" sourceRef="Activity_182bxbe" targetRef="Event_1t9nbgs" />
+    <bpmn:userTask id="Activity_1f631ky" name="Input">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+        <zeebe:formDefinition formId="Form_Input_Number" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_11godfq</bpmn:incoming>
+      <bpmn:outgoing>Flow_0xhzdcj</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_0mfzq70" name="Calculate Process">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="calculate-value" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0xhzdcj</bpmn:incoming>
+      <bpmn:outgoing>Flow_0niob9j</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_182bxbe" name="Result">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+        <zeebe:formDefinition formId="Form_Result_Number" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0niob9j</bpmn:incoming>
+      <bpmn:outgoing>Flow_0c59wy6</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="BPM_Calculate">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="182" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1t9nbgs_di" bpmnElement="Event_1t9nbgs">
+        <dc:Bounds x="752" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_083klzq_di" bpmnElement="Activity_1f631ky">
+        <dc:Bounds x="270" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0wrushc_di" bpmnElement="Activity_0mfzq70">
+        <dc:Bounds x="430" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_13mrmae_di" bpmnElement="Activity_182bxbe">
+        <dc:Bounds x="590" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_11godfq_di" bpmnElement="Flow_11godfq">
+        <di:waypoint x="218" y="120" />
+        <di:waypoint x="270" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0c59wy6_di" bpmnElement="Flow_0c59wy6">
+        <di:waypoint x="690" y="120" />
+        <di:waypoint x="752" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xhzdcj_di" bpmnElement="Flow_0xhzdcj">
+        <di:waypoint x="370" y="120" />
+        <di:waypoint x="430" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0niob9j_di" bpmnElement="Flow_0niob9j">
+        <di:waypoint x="530" y="120" />
+        <di:waypoint x="590" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

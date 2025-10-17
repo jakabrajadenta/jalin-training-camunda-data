@@ -1,0 +1,33 @@
+{
+  "components": [
+    {
+      "label": "Customer Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_081sfm1",
+        "columns": null
+      },
+      "id": "Field_0nlqmzk",
+      "key": "nama"
+    },
+    {
+      "label": "NIK",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1yw2z60",
+        "columns": null
+      },
+      "id": "Field_0zn1o1c",
+      "key": "nik"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Customer_Verification",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.36.1"
+  },
+  "schemaVersion": 18
+}
